@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import {
   Pressable,
@@ -87,7 +88,10 @@ export default function HomeScreen() {
         </Pressable>
 
         {selectedEvent && (
-          <Pressable style={styles.continueButton}>
+          <Pressable
+            style={styles.continueButton}
+            onPress={() => router.push('/mode')}
+          >
             <Text style={styles.continueText}>
               Continue
             </Text>
