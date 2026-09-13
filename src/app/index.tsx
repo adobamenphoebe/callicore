@@ -26,6 +26,12 @@ const events = [
 export default function HomeScreen() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
+  const handleContinue = () => {
+    if (!selectedEvent) return;
+
+    router.push('/mode');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -72,7 +78,8 @@ export default function HomeScreen() {
         <Pressable
           style={[
             styles.unsureButton,
-            selectedEvent === 'Not sure yet' && styles.unsureButtonSelected,
+            selectedEvent === 'Not sure yet' &&
+            styles.unsureButtonSelected,
           ]}
           onPress={() => setSelectedEvent('Not sure yet')}
         >
@@ -90,7 +97,7 @@ export default function HomeScreen() {
         {selectedEvent && (
           <Pressable
             style={styles.continueButton}
-            onPress={() => router.push('/mode')}
+            onPress={handleContinue}
           >
             <Text style={styles.continueText}>
               Continue
